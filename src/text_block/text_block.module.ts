@@ -5,6 +5,7 @@ import {SequelizeModule} from "@nestjs/sequelize";
 import {TextBlockModel} from "./text_block.model";
 import {AuthModule} from "../auth/auth.module";
 import {FileServiceModule} from "../file_service/file_service.module";
+import {FileStorage} from "../file_service/file_storage.model";
 
 @Module({
     controllers: [TextBlockController],
@@ -12,7 +13,7 @@ import {FileServiceModule} from "../file_service/file_service.module";
         TextBlockService,
     ],
     imports: [
-        SequelizeModule.forFeature([TextBlockModel]),
+        SequelizeModule.forFeature([TextBlockModel, FileStorage]),
         AuthModule, FileServiceModule
     ],
     exports: [TextBlockService]

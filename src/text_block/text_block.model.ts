@@ -1,5 +1,4 @@
-import {Column, DataType, HasOne, Model, Table} from "sequelize-typescript";
-import {User} from "../user/user.model";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
 
 interface TableBlockCreationAttr {
     slogan: string;
@@ -21,7 +20,7 @@ export class TextBlockModel extends Model<TextBlockModel, TableBlockCreationAttr
     @Column({type: DataType.STRING})
     name: string;
 
-    @Column({type: DataType.TEXT})
+    @Column({type: DataType.STRING})
     picture: string;
 
     @Column({type: DataType.STRING})

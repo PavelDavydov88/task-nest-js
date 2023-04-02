@@ -28,7 +28,6 @@ export class TextBlockController {
     @Post()
     @UseInterceptors(FileFieldsInterceptor([{ name: 'picture', maxCount : 1}]))
     create(@Body() textBlock: CreateTextBlockDto, @UploadedFiles() file) {
-        // console.log(file["picture"][0]["buffer"]);
         return this.textBlockService.creatTextBlock(textBlock, file)
     }
 
@@ -51,8 +50,4 @@ export class TextBlockController {
     update(@Body() dto: CreateTextBlockDto, @Param('id') id: number) {
         return this.textBlockService.updateTextBlock(dto, id);
     }
-
-
-
-
 }
