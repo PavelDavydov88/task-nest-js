@@ -8,27 +8,22 @@ import {UserModule} from "../user/user.module";
 import {ConfigModule} from "@nestjs/config";
 
 @Module({
-    controllers : [AuthController],
-    providers : [AuthService,],
-    imports : [
+    controllers: [AuthController],
+    providers: [AuthService,],
+    imports: [
         ConfigModule.forRoot({
             envFilePath: '.env'
         }),
         forwardRef(() => UserModule),
         ProfileModule,
         JwtModule.register({
-            secret : process.env.PRIVATE_KEY || 'SECRET',
-            // signOptions : {
-            //     expiresIn : '24h'
-            // },
+            secret: process.env.PRIVATE_KEY || 'SECRET',
         }),
     ],
-    exports : [
+    exports: [
         AuthService,
         JwtModule,
     ]
 })
 export class AuthModule {
-
-
 }

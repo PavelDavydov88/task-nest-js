@@ -13,14 +13,16 @@ import {AuthService} from './auth/auth.service';
 import {AuthController} from './auth/auth.controller';
 import {AuthModule} from './auth/auth.module';
 import {JwtService} from "@nestjs/jwt";
-import { TextBlockModule } from './text_block/text_block.module';
-import { FileServiceModule } from './file_service/file_service.module';
+import {TextBlockModule} from './text_block/text_block.module';
+import {FileServiceModule} from './file_service/file_service.module';
 import {TextBlockModel} from "./text_block/text_block.model";
 import {FileStorage} from "./file_service/file_storage.model";
 
 @Module({
     controllers: [AuthController],
-    providers: [AuthService, JwtService],
+    providers: [AuthService,
+        JwtService,
+    ],
     imports: [
         ConfigModule.forRoot({
             envFilePath: '.env'
@@ -37,5 +39,4 @@ import {FileStorage} from "./file_service/file_storage.model";
         }), ProfileModule, UserModule, RolesModule, AuthModule, TextBlockModule, FileServiceModule ]
 })
 export class AppModule {
-
 }

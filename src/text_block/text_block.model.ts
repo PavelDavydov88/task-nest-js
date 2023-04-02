@@ -10,7 +10,7 @@ interface TableBlockCreationAttr {
 }
 
 @Table({tableName: 'text_block', updatedAt: false, createdAt: false})
-export class TextBlockModel extends Model {
+export class TextBlockModel extends Model<TextBlockModel, TableBlockCreationAttr> {
 
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
@@ -21,7 +21,7 @@ export class TextBlockModel extends Model {
     @Column({type: DataType.STRING})
     name: string;
 
-    @Column({type: DataType.STRING})
+    @Column({type: DataType.TEXT})
     picture: string;
 
     @Column({type: DataType.STRING})

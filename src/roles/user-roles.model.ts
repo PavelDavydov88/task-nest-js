@@ -16,5 +16,4 @@ export class UserRoles extends Model<UserRoles> {
     @Column({type: DataType.INTEGER, onDelete: 'CASCADE'})
     userId: number;
 
-
 }

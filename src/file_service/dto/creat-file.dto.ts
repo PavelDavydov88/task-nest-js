@@ -5,6 +5,9 @@ export class CreatFileDto{
     readonly essenceId : string;
     readonly createdTime : string;
     readonly dataFile : string;
+    readonly nameFile : string;
+    readonly formatFile : string;
+
 
 
 }

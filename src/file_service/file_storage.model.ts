@@ -6,7 +6,8 @@ interface TableBlockCreationAttr {
     essenceId: string;
     createdTime: string;
     dataFile: string;
-
+    nameFile: string;
+    formatFile: string;
 }
 
 @Table({tableName: 'file_storage', updatedAt: false, createdAt: false})
@@ -26,5 +27,11 @@ export class FileStorage extends Model {
 
     @Column({type: DataType.TEXT})
     dataFile: string;
+
+    @Column({type: DataType.TEXT})
+    nameFile: string;
+
+    @Column({type: DataType.TEXT})
+    formatFile: string;
 
 }

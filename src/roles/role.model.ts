@@ -7,7 +7,7 @@ interface RoleCraetionAttrs {
     description: string,
 }
 
-@Table({tableName: 'role'})
+@Table({tableName: 'role', createdAt: false, updatedAt: false})
 export class Role extends Model<Role, RoleCraetionAttrs> {
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true, onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     id: number;
@@ -20,7 +20,5 @@ export class Role extends Model<Role, RoleCraetionAttrs> {
 
     @BelongsToMany(() => User, () => UserRoles)
     users : User[];
-
-
-
 }
+

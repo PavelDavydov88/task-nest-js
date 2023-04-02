@@ -1,15 +1,15 @@
-import {Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript";
 import {User} from "../user/user.model";
-import {ConnectionRefusedError} from "sequelize";
 
 interface ProfileCraetionAttrs {
-     firstName : string;
-     secondName : string;
-     telephone : string;
-     login : string;
+    firstName: string;
+    secondName: string;
+    telephone: string;
+    login: string;
+    userId: number;
 }
 
-@Table({tableName: 'profile'})
+@Table({tableName: 'profile', createdAt: false, updatedAt: false})
 export class Profile extends Model<Profile, ProfileCraetionAttrs> {
 
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
@@ -24,8 +24,16 @@ export class Profile extends Model<Profile, ProfileCraetionAttrs> {
     @Column({type: DataType.STRING})
     telephone: string;
 
-    @HasOne(() => User)
-    user: User;
+    @Column({type: DataType.STRING})
+    login: string;
 
+
+    @ForeignKey(() => User)
+    @Column({type: DataType.INTEGER, unique: true, onDelete: 'CASCADE', onUpdate: 'CASCADE'})
+    userId: number;
+
+
+    @BelongsTo(() => User)
+    user: User;
 
 }

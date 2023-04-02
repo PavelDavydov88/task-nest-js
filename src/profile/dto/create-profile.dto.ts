@@ -6,5 +6,6 @@ export class CreateProfileDto{
     readonly firstName : string;
     readonly secondName : string;
     readonly telephone : string;
+    readonly userId : string;
 
 }
