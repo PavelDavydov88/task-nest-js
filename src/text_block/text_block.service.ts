@@ -16,12 +16,9 @@ export class TextBlockService {
         const imagePath = this.fileService.creatFile(FileType.IMAGE, file);
         console.log(imagePath)
         const textBlock = await this.textBlockRepository.create({...dto, picture: imagePath});
-        this.fileStorageRepository.create({
-            essenceTable : TextBlockModel.getTableName(),
-            essenceId : textBlock.id,
-            nameFile : imagePath
-        }).then()
-
+        const nameTable = this.textBlockRepository.getTableName();
+        console.log(nameTable)
+        this.fileService.updateFile( imagePath, textBlock.id, nameTable).then();
         return textBlock;
     }
 
@@ -37,14 +34,9 @@ export class TextBlockService {
     }
 
     async deleteTextBlockById(id: number) {
-        console.log(await this.textBlockRepository.findOne({where: {id}}).then())
-        this.fileStorageRepository.update({
-            essenceTable : null,
-            essenceId : null,
-
-        }, {where: {nameFile: await this.textBlockRepository.findOne({where: {id}})}}).then()
+        const textBlock = await this.textBlockRepository.findOne({where: {id}}).then()
+        this.fileService.updateFile( textBlock.picture, null, null).then();
         await this.textBlockRepository.destroy({where: {id: id}});
-
         return HttpStatus.OK;
     }
 }

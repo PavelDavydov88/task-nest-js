@@ -2,7 +2,7 @@
 export class CreatFileDto{
 
     readonly essenceTable : string;
-    readonly essenceId : string;
-    readonly createdTime : number;
+    readonly essenceId : number;
+    readonly createdTime : string;
     readonly nameFile : string;
 }

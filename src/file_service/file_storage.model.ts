@@ -4,9 +4,7 @@ interface TableBlockCreationAttr {
     essenceTable: string;
     essenceId: string;
     createdTime: string;
-    dataFile: string;
     nameFile: string;
-    formatFile: string;
 }
 
 @Table({tableName: 'file_storage', updatedAt: false, createdAt: true})
@@ -23,4 +21,6 @@ export class FileStorage extends Model {
 
     @Column({type: DataType.STRING})
     nameFile: string;
+    @Column({type: DataType.STRING})
+    createdTime: string;
 }
